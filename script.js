@@ -46,3 +46,10 @@ function setDetailCardBackground(){
     document.getElementById('centerOverAll').style.display = 'flex';
     document.getElementById('pokeDetailCard').style.display = 'flex';
 }
+
+
+function closeDetail(){
+    document.getElementById('centerOverAll').style.display = 'none';
+    document.getElementById('pokeDetailCard').style.display = 'none'; 
+}
+
