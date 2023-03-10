@@ -8,15 +8,18 @@ body{
     background-attachment: fixed;
 }
 
+
 #pokedex{
     min-height: 100px;
     background-color: rgb(221, 65, 65);
 }
 
+
 #pokedex h1{
     margin: 0;
     color: white;
 }
+
 
 #pokemonContainer{
     flex-wrap: wrap;
@@ -24,6 +27,7 @@ body{
     justify-content: center;
     align-items: center;
 }
+
 
 .pokeNameDesigne{
     background-color: red;
@@ -33,6 +37,7 @@ body{
     justify-content: center;
     margin: 0;
 }
+
 
 .pokeContainer{
     display: flex;
@@ -44,6 +49,7 @@ body{
     cursor: pointer;
 }
 
+
 .pokeContainer:hover{
     display: flex;
     flex-direction: column;
@@ -53,4 +59,48 @@ body{
     max-width: 300px;
     cursor: pointer;
     background-color: bisque;
+}
+
+
+#centerOverAll{
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.219);
+}
+
+
+#pokeDetailCard{
+    display: none;
+    min-width: 350px;
+    max-width: 350px;
+    min-height: 450px;
+    background-color: white;
+}
+
+
+#closeDetailCard{
+    cursor: pointer;
+}
+
+
+#closeDetailCard:hover{
+    cursor: pointer;
+}
+
+
+#pokeDetailPic{
+    width: 50%;
+}
+
+
+#pokeDetailPicContainer{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

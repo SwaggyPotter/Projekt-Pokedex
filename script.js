@@ -2,18 +2,19 @@ let currentPokemon;
 
 
 async function loadPokemon() {
-    for (i = 1; i < 1009; i++) {
+    for (i = 1; i < 150; i++) {
         let url = `https://pokeapi.co/api/v2/pokemon/${i}/`
         let response = await fetch(url);
         let currentPokemon = await response.json();
         printPokemon(currentPokemon);
         refreshLoadingBar(i)
-        console.log()
+        console.log(currentPokemon)
     }
 }
 
+
 function refreshLoadingBar(l) {
-   let loadingBar = (l / 1009) * 100
+   let loadingBar = (l / 150) * 100
    document.getElementById('loadingBar').style = `width:${loadingBar}%`
    document.getElementById('loadingBar').innerText = `Pokemon are loading: ${loadingBar.toFixed()}%`
    if(loadingBar.toFixed() > 98){
@@ -22,9 +23,26 @@ function refreshLoadingBar(l) {
    console.log(`${loadingBar}%`)
 }
 
+
 function printPokemon(cP) {
     document.getElementById('pokemonContainer').innerHTML += `
-    <div class="pokeContainer" id="pokeID${i}"><img src="${cP['sprites']['front_default']}">
+    <div onclick="showPokemonDetail(${i})" class="pokeContainer" id="pokeID${i}"><img src="${cP['sprites']['front_default']}">
      <p class="pokeNameDesigne">${cP['name']}</p>
     </div>`
+}
+
+
+async function showPokemonDetail(spd){ 
+    let information = `https://pokeapi.co/api/v2/pokemon/${spd}/`
+    let response = await fetch(information)
+    let detailInformation = await response.json();
+    document.getElementById('detailName').innerText = detailInformation['name']
+    document.getElementById('ID').innerText = detailInformation['id']
+    setDetailCardBackground();
+}
+
+
+function setDetailCardBackground(){
+    document.getElementById('centerOverAll').style.display = 'flex';
+    document.getElementById('pokeDetailCard').style.display = 'flex';
 }
