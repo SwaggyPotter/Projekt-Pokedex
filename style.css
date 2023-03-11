@@ -8,6 +8,23 @@ body{
     background-attachment: fixed;
 }
 
+table{
+    width: 100%;
+    border: solid black 1px;
+}
+
+tr{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+table th{
+    text-align: center;
+    border: solid black 1px;
+    width: 50%;
+}
+
 
 #pokedex{
     min-height: 100px;
@@ -85,11 +102,18 @@ body{
 
 #closeDetailCard{
     cursor: pointer;
+    position: relative;
 }
 
 
 #closeDetailCard:hover{
     cursor: pointer;
+    position: relative;
+}
+
+#closeX{
+    position: absolute;
+    right: 10px;
 }
 
 

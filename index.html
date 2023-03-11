@@ -30,7 +30,7 @@
 
     <div id="centerOverAll">
         <div id="pokeDetailCard">
-            <p onclick="closeDetail()" id="closeDetailCard">X</p>
+            <p id="closeDetailCard"><span id="closeX" onclick="closeDetail()">X</span></p>
             <div id="pokeDetailPicContainer">
                 <img id="pokeDetailPic"
                     src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/144.png">
@@ -39,6 +39,21 @@
             <div id="detailInformation">
                 <p id="detailName">name</p>
                 <p><span>ID:#</span><span id="ID"></span></p>
+                <table>
+                    <tr>
+                        <th>Type</th>
+                        <th id="typeClass"></th>
+                        <th id="typeClass2"></th>
+                    </tr>
+                    <tr>
+                        <th>Weight</th>
+                        <th id="weight">100</th>
+                    </tr>
+                    <tr>
+                        <th>height</th>
+                        <th id="height">100</th>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
