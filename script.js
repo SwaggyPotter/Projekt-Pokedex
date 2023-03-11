@@ -36,6 +36,7 @@ async function showPokemonDetail(spd){
     let information = `https://pokeapi.co/api/v2/pokemon/${spd}/`
     let response = await fetch(information)
     let detailInformation = await response.json();
+    document.getElementById('pokeDetailPic').src = detailInformation['sprites']['front_default']
     document.getElementById('detailName').innerText = detailInformation['name']
     document.getElementById('ID').innerText = detailInformation['id']
     setDetailCardBackground();
@@ -44,7 +45,7 @@ async function showPokemonDetail(spd){
 
 function setDetailCardBackground(){
     document.getElementById('centerOverAll').style.display = 'flex';
-    document.getElementById('pokeDetailCard').style.display = 'flex';
+    document.getElementById('pokeDetailCard').style.display = 'inline';
 }
 
 
