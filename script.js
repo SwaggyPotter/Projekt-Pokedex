@@ -2,7 +2,7 @@ let currentPokemon;
 
 
 async function loadPokemon() {
-    for (i = 1; i < 15; i++) {
+    for (i = 1; i < 1010; i++) {
         let url = `https://pokeapi.co/api/v2/pokemon/${i}/`
         let response = await fetch(url);
         let currentPokemon = await response.json();
@@ -14,7 +14,7 @@ async function loadPokemon() {
 
 
 function refreshLoadingBar(l) {
-    let loadingBar = (l / 15) * 100
+    let loadingBar = (l / 1010) * 100
     document.getElementById('loadingBar').style = `width:${loadingBar}%`
     document.getElementById('loadingBar').innerText = `Pokemon are loading: ${loadingBar.toFixed()}%`
     if (loadingBar.toFixed() > 98) {
