@@ -37,10 +37,25 @@ async function showPokemonDetail(spd) {
     let response = await fetch(information)
     let detailInformation = await response.json();
     loadDetailInformation(detailInformation);
+    setArrows(spd)
     setDetailCardBackground();
 }
 
+
+function setArrows(arrowID) {
+    console.log('Set id')
+    document.getElementById('arrowContainer').innerHTML = `
+    <span onclick="showPreviousPokemon(${arrowID})" id="arrowBack" class="material-symbols-outlined arrow">
+        arrow_back
+    </span>
+    <span onclick="showNextPokemon(${arrowID})" id="arrowForward" class="material-symbols-outlined arrow">
+        arrow_forward
+    </span>`
+}
+
+
 function loadDetailInformation(detailInformation) {
+    document.getElementById('typeClass2').innerText = '-'
     document.getElementById('pokeDetailPic').src = detailInformation['sprites']['front_default']
     document.getElementById('detailName').innerText = detailInformation['name']
     document.getElementById('ID').innerText = detailInformation['id']
@@ -65,3 +80,16 @@ function closeDetail() {
     document.getElementById('typeClass2').innerText = '-';
 }
 
+
+function showNextPokemon(next) {
+    next++
+    showPokemonDetail(next)
+}
+
+
+function showPreviousPokemon(previous) {
+    if (previous > 1) {
+        previous--
+        showPokemonDetail(previous)
+    }
+}

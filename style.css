@@ -114,6 +114,14 @@ table th{
 #closeX{
     position: absolute;
     right: 10px;
+    background-color: red;
+    padding: 5px 15px;
+}
+#closeX:hover{
+    position: absolute;
+    right: 10px;
+    background-color: rgb(255, 131, 131);
+    padding: 5px 15px;
 }
 
 
@@ -127,4 +135,19 @@ table th{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+#loadingBarContainer{
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+#arrowContainer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.arrow{
+    cursor: pointer;
 }
