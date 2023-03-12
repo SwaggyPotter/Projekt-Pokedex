@@ -1,6 +1,7 @@
 let currentPokemon;
 
 
+
 async function loadPokemon() {
     for (i = 1; i < 110; i++) {
         let url = `https://pokeapi.co/api/v2/pokemon/${i}/`
@@ -11,6 +12,8 @@ async function loadPokemon() {
         console.log(currentPokemon)
     }
 }
+
+
 
 
 function refreshLoadingBar(l) {
@@ -96,5 +99,16 @@ function showPreviousPokemon(previous) {
 
 
 function search(){
+    let pokeSearch = document.getElementById('pokeSearch').value
+    printSearchedPokemon(pokeSearch)
+}
 
+async function printSearchedPokemon(sP) {
+    let information = `https://pokeapi.co/api/v2/pokemon/${sP}/`
+    let response = await fetch(information)
+    let detailInformation = await response.json();
+    document.getElementById('pokemonContainer').innerHTML = `
+    <div onclick="showPokemonDetail(${detailInformation['id']})" class="pokeContainer" id="pokeID"><img src="${detailInformation['sprites']['front_default']}">
+     <p class="pokeNameDesigne">${detailInformation['name']}</p>
+    </div>`
 }
