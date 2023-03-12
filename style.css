@@ -91,6 +91,10 @@ table th{
 }
 
 
+
+
+
+
 #pokeDetailCard{
     display: none;
     min-width: 350px;
@@ -98,10 +102,26 @@ table th{
     min-height: 450px;
     max-height: 100vh;
     background-color: white;
+    position: relative;
+}
+
+#pokeDetailCard table{
+    position: absolute;
+    bottom: 0;
+}
+
+#IDContain{
+    display: flex;
+    justify-content: center;
 }
 
 #pokeDetailCard hr{
     margin-top: 0;
+}
+
+#detailName{
+    display: flex;
+    justify-content: center;
 }
 
 #closeDetailCard{

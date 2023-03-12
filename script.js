@@ -2,7 +2,7 @@ let currentPokemon;
 
 
 async function loadPokemon() {
-    for (i = 1; i < 15; i++) {
+    for (i = 1; i < 110; i++) {
         let url = `https://pokeapi.co/api/v2/pokemon/${i}/`
         let response = await fetch(url);
         let currentPokemon = await response.json();
@@ -92,4 +92,9 @@ function showPreviousPokemon(previous) {
         previous--
         showPokemonDetail(previous)
     }
+}
+
+
+function search(){
+
 }
