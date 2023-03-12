@@ -96,13 +96,18 @@ table th{
     min-width: 350px;
     max-width: 350px;
     min-height: 450px;
+    max-height: 100vh;
     background-color: white;
 }
 
+#pokeDetailCard hr{
+    margin-top: 0;
+}
 
 #closeDetailCard{
     cursor: pointer;
     position: relative;
+    margin: 0;
 }
 
 
@@ -135,6 +140,9 @@ table th{
     display: flex;
     align-items: center;
     justify-content: center;
+    background-image: url('mp3/ezgif.com-video-to-gif.gif');
+    background-size: 180%;
+    background-position-y: -160px;
 }
 
 #loadingBarContainer{
