@@ -1,9 +1,8 @@
 let currentPokemon;
 
 
-
 async function loadPokemon() {
-    for (i = 1; i < 110; i++) {
+    for (i = 1; i < 1010; i++) {
         let url = `https://pokeapi.co/api/v2/pokemon/${i}/`
         let response = await fetch(url);
         let currentPokemon = await response.json();
@@ -12,8 +11,6 @@ async function loadPokemon() {
         console.log(currentPokemon)
     }
 }
-
-
 
 
 function refreshLoadingBar(l) {
@@ -98,7 +95,7 @@ function showPreviousPokemon(previous) {
 }
 
 
-function search(){
+function search() {
     let pokeSearch = document.getElementById('pokeSearch').value
     printSearchedPokemon(pokeSearch)
 }
@@ -111,4 +108,15 @@ async function printSearchedPokemon(sP) {
     <div onclick="showPokemonDetail(${detailInformation['id']})" class="pokeContainer" id="pokeID"><img src="${detailInformation['sprites']['front_default']}">
      <p class="pokeNameDesigne">${detailInformation['name']}</p>
     </div>`
+}
+
+
+window.onscroll = function () { myFunction() };
+
+function myFunction() {
+    if (document.documentElement.scrollTop > 250) {
+        document.getElementById("searchContainer").style.position = 'fixed'
+    } else if (document.documentElement.scrollTop < 250) {
+        document.getElementById("searchContainer").style.position = "static";
+    }
 }
