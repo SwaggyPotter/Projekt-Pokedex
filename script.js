@@ -1,26 +1,48 @@
 let currentPokemon;
+let loadButton = document.getElementById('loadMoreButton')
+let loadedPokemon = 150;
+let loadedPokemonCounter = 1;
+
+loadButton.addEventListener('click', () => {
+    loadMorePokemon();
+})
 
 
 async function loadPokemon() {
-    for (i = 1; i < 1010; i++) {
+    for (i = loadedPokemonCounter; i < loadedPokemon; i++) {
         let url = `https://pokeapi.co/api/v2/pokemon/${i}/`
         let response = await fetch(url);
         let currentPokemon = await response.json();
         printPokemon(currentPokemon);
-        refreshLoadingBar(i)
+        refreshLoadingBar(i, loadedPokemon)
         console.log(currentPokemon)
     }
 }
 
 
-function refreshLoadingBar(l) {
-    let loadingBar = (l / 1010) * 100
+function refreshLoadingBar(l, LP) {
+    let loadingBar = (l / LP) * 100
     document.getElementById('loadingBar').style = `width:${loadingBar}%`
     document.getElementById('loadingBar').innerText = `Pokemon are loading: ${loadingBar.toFixed()}%`
     if (loadingBar.toFixed() > 98) {
-        document.getElementById('loadingBar').innerText = 'alle Pokemon geladen. Viel Spaß :)'
+        document.getElementById('loadingBar').innerText = `${LP} Pokemon geladen. Viel Spaß :)`
     }
     console.log(`${loadingBar}%`)
+}
+
+
+function loadMorePokemon() {
+    if (loadedPokemon < 900) {
+        loadedPokemonCounter = loadedPokemonCounter + 150
+        loadedPokemon = loadedPokemon + 150;
+        loadPokemon();
+    }
+    else if (loadedPokemon == 900) {
+        loadedPokemonCounter = loadedPokemonCounter + 100
+        loadedPokemon = loadedPokemon + 110;
+        loadPokemon();
+        document.getElementById('loadMoreButton').innerText = 'Alle 1010 Pokemon geladen'
+    }
 }
 
 
@@ -114,9 +136,10 @@ async function printSearchedPokemon(sP) {
 window.onscroll = function () { myFunction() };
 
 function myFunction() {
-    if (document.documentElement.scrollTop > 250) {
+    if (document.documentElement.scrollTop > 80) {
         document.getElementById("searchContainer").style.position = 'fixed'
-    } else if (document.documentElement.scrollTop < 250) {
+        document.getElementById("searchContainer").style.top = '15px'
+    } else if (document.documentElement.scrollTop < 80) {
         document.getElementById("searchContainer").style.position = "static";
     }
 }
