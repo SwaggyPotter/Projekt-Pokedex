@@ -25,9 +25,9 @@ function refreshLoadingBar(l, LP) {
     document.getElementById('loadingBar').style = `width:${loadingBar}%`
     document.getElementById('loadingBar').innerText = `Pokemon are loading: ${loadingBar.toFixed()}%`
     if (loadingBar.toFixed() > 98) {
-        document.getElementById('loadingBar').innerText = `${LP} Pokemon geladen. Viel Spaß :)`
+        document.getElementById('loadingBar').innerText = `${LP} von 1010 Pokemon geladen`
+        document.getElementById('loadingBar').style = `width:100%`
     }
-    console.log(`${loadingBar}%`)
 }
 
 
@@ -61,6 +61,7 @@ async function showPokemonDetail(spd) {
     loadDetailInformation(detailInformation);
     setArrows(spd)
     setDetailCardBackground();
+    closeDetailCardContainer();
 }
 
 
@@ -84,6 +85,7 @@ function loadDetailInformation(detailInformation) {
     document.getElementById('typeClass').innerText = detailInformation['types']['0']['type']['name']
     document.getElementById('weight').innerText = detailInformation['weight']
     document.getElementById('height').innerText = detailInformation['height']
+    document.getElementById('attackBtnContainer').innerHTML = `<button onclick="loadAttacks(${detailInformation['id']})" id="attackButton" class="btn btn-info">Attacks</button>`
     if (detailInformation['types']['1']) {
         document.getElementById('typeClass2').innerText = detailInformation['types']['1']['type']['name']
     }
@@ -126,7 +128,9 @@ async function printSearchedPokemon(sP) {
     let information = `https://pokeapi.co/api/v2/pokemon/${sP}/`
     let response = await fetch(information)
     let detailInformation = await response.json();
-    document.getElementById('pokemonContainer').innerHTML = `
+    document.getElementById('body').style.overflow = 'hidden';
+    document.getElementById('searchedPokemonContainer').style.display = 'flex';
+    document.getElementById('searchedPokemonContainer').innerHTML = `
     <div onclick="showPokemonDetail(${detailInformation['id']})" class="pokeContainer" id="pokeID"><img src="${detailInformation['sprites']['front_default']}">
      <p class="pokeNameDesigne">${detailInformation['name']}</p>
     </div>`
@@ -142,4 +146,13 @@ function myFunction() {
     } else if (document.documentElement.scrollTop < 80) {
         document.getElementById("searchContainer").style.position = "static";
     }
+}
+
+function closeDetailCardContainer(){
+    document.getElementById('searchedPokemonContainer').style.display = 'none';
+    document.getElementById('body').style.overflow = 'visible';
+}
+
+function loadAttacks(attackID){
+    
 }

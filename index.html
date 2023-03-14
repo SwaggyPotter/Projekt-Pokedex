@@ -15,7 +15,7 @@
     <title>Pokedex</title>
 </head>
 
-<body onload="loadPokemon()">
+<body id="body" onload="loadPokemon()">
     <div id="loadingBarContainer">
         <div class="progress">
             <div id="loadingBar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
@@ -56,7 +56,10 @@
                     <b id="detailName">name</b>
                     <p id="IDContain"><span>ID:#</span><span id="ID"></span></p>
                 </div>
-                <table>
+                <div id="attackBtnContainer">
+                    <button id="attackButton" class="btn btn-info">Attacks</button>
+                </div>
+                <table id="detailTable">
                     <tr>
                         <th>Type</th>
                         <th id="typeClass"></th>
@@ -72,10 +75,30 @@
                     </tr>
                 </table>
             </div>
+
+        </div>
+        <div id="attackContainer">
+            <table>
+                <tr>
+                    <th>Attacks</th>
+                </tr>
+                <tr>
+                    <th>1</th>
+                </tr>
+                <tr>
+                    <th>2</th>
+                </tr>
+                <tr>
+                    <th>3</th>
+                </tr>
+            </table>
         </div>
     </div>
-
     <button id="loadMoreButton">Load more</button>
+
+    <div id="searchedPokemonContainer">
+
+    </div>
 </body>
 <script src="script.js"></script>
 

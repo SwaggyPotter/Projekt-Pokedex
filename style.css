@@ -2,10 +2,11 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
-    background-image: url('pics/pokedexBackground.jpg');
+    background-image: url('pics/ezgif.com-video-to-gif.gif');
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 
 
@@ -22,16 +23,27 @@ tr {
 }
 
 
-table th {
+#detailTable th {
     text-align: center;
     border: solid black 1px;
     width: 50%;
+}
+
+#attackContainer table tr{
+    border: solid black 1px;
 }
 
 
 #pokedex {
     min-height: 100px;
     background-color: rgb(221, 65, 65);
+    padding: 15px;
+}
+
+#attackContainer{
+    min-width: 100px;
+    min-height: 450px;
+    background-color: white;
 }
 
 
@@ -50,7 +62,7 @@ table th {
 
 
 .pokeNameDesigne {
-    background-color: rgb(255, 230, 0);
+    background-color: rgb(255, 81, 0);
     width: 100%;
     display: flex;
     align-items: center;
@@ -68,6 +80,10 @@ table th {
     max-width: 300px;
     cursor: pointer;
     transition: 125ms;
+    background-color: rgba(58, 105, 190, 0.589);
+    margin: 5px;
+    color: white;
+    border-radius: 10px;
 }
 
 
@@ -79,8 +95,9 @@ table th {
     min-width: 300px;
     max-width: 300px;
     cursor: pointer;
-    background-color: rgb(196, 255, 228);
+    background-color: rgba(196, 233, 255, 0.438);
     transition: 125ms;
+    color: white;
 }
 
 
@@ -102,8 +119,16 @@ table th {
     max-width: 350px;
     min-height: 450px;
     max-height: 100vh;
-    background-color: white;
+    background-color: rgb(230, 227, 102);
     position: relative;
+    z-index: 5;
+}
+
+#attackBtnContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
 }
 
 
@@ -190,11 +215,35 @@ table th {
 
 .arrow {
     cursor: pointer;
+    background-color: aquamarine;
+    padding: 5px;
+    border-radius: 20px;
+    transition: 125ms;
+}
+
+.arrow:hover {
+    cursor: pointer;
+    background-color: rgb(43, 255, 0);
+    padding: 5px;
+    border-radius: 20px;
+    transition: 125ms;
 }
 
 #loadMoreButton{
     width: 100%;
     margin-top: 50px;
+}
+
+#searchedPokemonContainer{
+    position:fixed;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: none; /*standart none*/
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    top: 0;
 }
 
 @media screen and (max-width: 767px) {
@@ -206,18 +255,6 @@ table th {
         min-width: 300px;
         max-width: 300px;
         cursor: pointer;
-    }
-    
-    
-    .pokeContainer:hover {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        min-width: 300px;
-        max-width: 300px;
-        cursor: pointer;
-        background-color: rgba(255, 228, 196, 0);
     }
 
 
@@ -232,6 +269,7 @@ table th {
         background-color: rgb(135, 255, 23);
         transition: 125ms;
     }
+
 
     #pokeDetailCard {
         display: none;
