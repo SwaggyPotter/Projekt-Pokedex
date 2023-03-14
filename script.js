@@ -86,6 +86,7 @@ function loadDetailInformation(detailInformation) {
     document.getElementById('weight').innerText = detailInformation['weight']
     document.getElementById('height').innerText = detailInformation['height']
     document.getElementById('attackBtnContainer').innerHTML = `<button onclick="loadAttacks(${detailInformation['id']})" id="attackButton" class="btn btn-info">Attacks</button>`
+    
     if (detailInformation['types']['1']) {
         document.getElementById('typeClass2').innerText = detailInformation['types']['1']['type']['name']
     }
@@ -102,12 +103,14 @@ function closeDetail() {
     document.getElementById('centerOverAll').style.display = 'none';
     document.getElementById('pokeDetailCard').style.display = 'none';
     document.getElementById('typeClass2').innerText = '-';
+    document.getElementById('attackContainer').style.display = 'none';
 }
 
 
 function showNextPokemon(next) {
     next++
     showPokemonDetail(next)
+    document.getElementById('attackContainer').style.display = 'none';
 }
 
 
@@ -116,6 +119,7 @@ function showPreviousPokemon(previous) {
         previous--
         showPokemonDetail(previous)
     }
+    document.getElementById('attackContainer').style.display = 'none';
 }
 
 
@@ -148,11 +152,24 @@ function myFunction() {
     }
 }
 
-function closeDetailCardContainer(){
+function closeDetailCardContainer() {
     document.getElementById('searchedPokemonContainer').style.display = 'none';
     document.getElementById('body').style.overflow = 'visible';
 }
 
-function loadAttacks(attackID){
-    
+async function loadAttacks(attackID) {
+    document.getElementById('attackContainer').style.display = 'flex';
+    document.getElementById('attackTable').innerHTML = `
+    <table id="attackTable">
+        <tr><th>Attacks</th></tr>
+    </table>`;
+    let information = `https://pokeapi.co/api/v2/pokemon/${attackID}/`
+    let response = await fetch(information)
+    let detailInformation = await response.json();
+    for (i = 0; i < detailInformation['moves'].length; i++) {
+        document.getElementById('attackTable').innerHTML += `
+        <table id="attackTable">
+        <tr><th>${detailInformation['moves'][`${i}`]['move']['name']}</th></tr>
+        </table>`
+    }
 }

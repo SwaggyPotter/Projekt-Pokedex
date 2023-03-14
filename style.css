@@ -43,7 +43,10 @@ tr {
 #attackContainer{
     min-width: 100px;
     min-height: 450px;
+    max-height: 450px;
+    overflow-y: scroll;
     background-color: white;
+    display: none;
 }
 
 
