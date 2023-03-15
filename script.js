@@ -192,11 +192,17 @@ async function loadStats(statID) {
     let response = await fetch(information)
     let detailInformation = await response.json();
     document.getElementById('hp').style = `width:${calcStat(detailInformation['stats']['0']['base_stat'], maxHP)}%`
+    document.getElementById('hp').innerText = `HP : ${calcStat(detailInformation['stats']['0']['base_stat'], maxHP).toFixed()}`
     document.getElementById('attack').style = `width:${calcStat(detailInformation['stats']['1']['base_stat'], maxAT)}%`
+    document.getElementById('attack').innerText = `Attack : ${calcStat(detailInformation['stats']['1']['base_stat'], maxAT).toFixed()}`
     document.getElementById('defense').style = `width:${calcStat(detailInformation['stats']['2']['base_stat'], maxDEF)}%`
+    document.getElementById('defense').innerText = `Defense : ${calcStat(detailInformation['stats']['2']['base_stat'], maxDEF).toFixed()}`
     document.getElementById('spAttack').style = `width:${calcStat(detailInformation['stats']['3']['base_stat'], maxSAT)}%`
+    document.getElementById('spAttack').innerText = `Spezial-Attack : ${calcStat(detailInformation['stats']['3']['base_stat'], maxSAT).toFixed()}`
     document.getElementById('spDefense').style = `width:${calcStat(detailInformation['stats']['4']['base_stat'], maxSDEF)}%`
+    document.getElementById('spDefense').innerText = `Spezial-Defense : ${calcStat(detailInformation['stats']['4']['base_stat'], maxSDEF).toFixed()}`
     document.getElementById('speed').style = `width:${calcStat(detailInformation['stats']['5']['base_stat'], maxSPD)}%`
+    document.getElementById('speed').innerText = `Speed : ${calcStat(detailInformation['stats']['5']['base_stat'], maxSPD).toFixed()}`
 }
 
 
