@@ -2,6 +2,13 @@ let currentPokemon;
 let loadButton = document.getElementById('loadMoreButton')
 let loadedPokemon = 150;
 let loadedPokemonCounter = 1;
+let maxHP = 255;
+let maxAT = 190;
+let maxDEF = 230;
+let maxSAT = 194;
+let maxSDEF = 230;
+let maxSPD = 180;
+
 
 loadButton.addEventListener('click', () => {
     loadMorePokemon();
@@ -87,7 +94,7 @@ function loadDetailInformation(detailInformation) {
     document.getElementById('height').innerText = detailInformation['height']
     document.getElementById('attackBtnContainer').innerHTML = `<button onclick="loadAttacks(${detailInformation['id']})" id="attackButton" class="btn btn-dark">Attacks</button>
     <button onclick="loadStats(${detailInformation['id']})" id="statButton" class="btn btn-dark">Stats</button>`
-    
+
     if (detailInformation['types']['1']) {
         document.getElementById('typeClass2').innerText = detailInformation['types']['1']['type']['name']
     }
@@ -158,7 +165,7 @@ function closeDetailCardContainer() {
     document.getElementById('body').style.overflow = 'visible';
 }
 
-function closeTable(){
+function closeTable() {
     document.getElementById('attackContainer').style.display = 'none';
 }
 
@@ -180,15 +187,21 @@ async function loadAttacks(attackID) {
 }
 
 
-async function loadStats(statID){
+async function loadStats(statID) {
     let information = `https://pokeapi.co/api/v2/pokemon/${statID}/`
     let response = await fetch(information)
     let detailInformation = await response.json();
-    document.getElementById('stats').innerHTML = `
-    <p id="hp">${detailInformation['stats']['0']['base_stat']}</p>
-    <p id="at">${detailInformation['stats']['1']['base_stat']}</p>
-    <p id="def">${detailInformation['stats']['2']['base_stat']}</p>
-    <p id="spzAt">${detailInformation['stats']['3']['base_stat']}</p>
-    <p id="spzDef">${detailInformation['stats']['4']['base_stat']}</p>
-    <p id="spd">${detailInformation['stats']['5']['base_stat']}</p>`
+    document.getElementById('hp').style = `width:${calcStat(detailInformation['stats']['0']['base_stat'], maxHP)}%`
+    document.getElementById('attack').style = `width:${calcStat(detailInformation['stats']['1']['base_stat'], maxAT)}%`
+    document.getElementById('defense').style = `width:${calcStat(detailInformation['stats']['2']['base_stat'], maxDEF)}%`
+    document.getElementById('spAttack').style = `width:${calcStat(detailInformation['stats']['3']['base_stat'], maxSAT)}%`
+    document.getElementById('spDefense').style = `width:${calcStat(detailInformation['stats']['4']['base_stat'], maxSDEF)}%`
+    document.getElementById('speed').style = `width:${calcStat(detailInformation['stats']['5']['base_stat'], maxSPD)}%`
+}
+
+
+
+function calcStat(sum1, sum2) {
+    let result = (sum1 / sum2) * 100
+    return result;
 }

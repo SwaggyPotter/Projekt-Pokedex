@@ -85,12 +85,24 @@
             </table>
         </div>
         <div id="stats">
-            <p id="hp">hp</p>
-            <p id="at">at</p>
-            <p id="def">def</p>
-            <p id="spzAt">spez-at</p>
-            <p id="spzDef">spez-def</p>
-            <p id="spd">spd</p>
+            <div class="progress">
+                <div id="hp" class="progress-bar bg-success" role="progressbar" style="width: 25%"></div>
+            </div>
+            <div class="progress">
+                <div id="attack" class="progress-bar bg-danger" role="progressbar" style="width: 25%"></div>
+            </div>
+            <div class="progress">
+                <div id="defense" class="progress-bar bg-info" role="progressbar" style="width: 25%"></div>
+            </div>
+            <div class="progress">
+                <div id="spAttack" class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 10%"></div>
+            </div>
+            <div class="progress">
+                <div id="spDefense" class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 50%"></div>
+            </div>
+            <div class="progress">
+                <div id="speed" class="progress-bar w-75" role="progressbar"></div>
+            </div>
         </div>
     </div>
 
