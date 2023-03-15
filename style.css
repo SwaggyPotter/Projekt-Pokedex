@@ -47,7 +47,10 @@ tr {
     overflow-y: scroll;
     background-color: white;
     display: none;
+    margin-left: -130px;
+    z-index: 6;
 }
+
 
 
 #pokedex h1 {
@@ -125,15 +128,26 @@ tr {
     background-color: rgb(230, 227, 102);
     position: relative;
     z-index: 5;
+    overflow: hidden;
 }
 
 #attackBtnContainer{
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     margin-top: 25px;
 }
 
+#stats{
+    background-color: white;
+    position: absolute;
+    z-index: 10;
+    width: 350px;
+    margin-top: 690px;
+    display: flex;
+    flex-direction: column;
+    border: solid black 1px;
+}
 
 #pokeDetailCard table {
     position: absolute;
@@ -185,6 +199,16 @@ tr {
     background-color: rgb(255, 131, 131);
     padding: 5px 15px;
 }
+
+#closeAttacks{
+    background-color: red;
+}
+
+#closeAttacks:hover{
+    background-color: rgb(252, 111, 111);
+    cursor: pointer;
+}
+
 
 
 #pokeDetailPic {
@@ -245,7 +269,7 @@ tr {
     display: none; /*standart none*/
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background-color: rgba(0, 247, 255, 0.349);
     top: 0;
 }
 
@@ -282,6 +306,18 @@ tr {
         max-height: 100vh;
         background-color: white;
         position: relative;
+        background-color: rgb(230, 227, 102);
+    }
+
+    #stats{
+        background-color: white;
+        position: absolute;
+        z-index: 10;
+        width: 320px;
+        margin-top: 690px;
+        display: flex;
+        flex-direction: column;
+        border: solid black 1px;
     }
 
 

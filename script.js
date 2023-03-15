@@ -85,7 +85,8 @@ function loadDetailInformation(detailInformation) {
     document.getElementById('typeClass').innerText = detailInformation['types']['0']['type']['name']
     document.getElementById('weight').innerText = detailInformation['weight']
     document.getElementById('height').innerText = detailInformation['height']
-    document.getElementById('attackBtnContainer').innerHTML = `<button onclick="loadAttacks(${detailInformation['id']})" id="attackButton" class="btn btn-info">Attacks</button>`
+    document.getElementById('attackBtnContainer').innerHTML = `<button onclick="loadAttacks(${detailInformation['id']})" id="attackButton" class="btn btn-dark">Attacks</button>
+    <button onclick="loadStats(${detailInformation['id']})" id="statButton" class="btn btn-dark">Stats</button>`
     
     if (detailInformation['types']['1']) {
         document.getElementById('typeClass2').innerText = detailInformation['types']['1']['type']['name']
@@ -157,11 +158,15 @@ function closeDetailCardContainer() {
     document.getElementById('body').style.overflow = 'visible';
 }
 
+function closeTable(){
+    document.getElementById('attackContainer').style.display = 'none';
+}
+
 async function loadAttacks(attackID) {
     document.getElementById('attackContainer').style.display = 'flex';
     document.getElementById('attackTable').innerHTML = `
     <table id="attackTable">
-        <tr><th>Attacks</th></tr>
+        <tr onclick="closeTable()" id="closeAttacks"><th>close attacks</th></tr>
     </table>`;
     let information = `https://pokeapi.co/api/v2/pokemon/${attackID}/`
     let response = await fetch(information)
@@ -172,4 +177,18 @@ async function loadAttacks(attackID) {
         <tr><th>${detailInformation['moves'][`${i}`]['move']['name']}</th></tr>
         </table>`
     }
+}
+
+
+async function loadStats(statID){
+    let information = `https://pokeapi.co/api/v2/pokemon/${statID}/`
+    let response = await fetch(information)
+    let detailInformation = await response.json();
+    document.getElementById('stats').innerHTML = `
+    <p id="hp">${detailInformation['stats']['0']['base_stat']}</p>
+    <p id="at">${detailInformation['stats']['1']['base_stat']}</p>
+    <p id="def">${detailInformation['stats']['2']['base_stat']}</p>
+    <p id="spzAt">${detailInformation['stats']['3']['base_stat']}</p>
+    <p id="spzDef">${detailInformation['stats']['4']['base_stat']}</p>
+    <p id="spd">${detailInformation['stats']['5']['base_stat']}</p>`
 }

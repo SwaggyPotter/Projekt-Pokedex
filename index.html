@@ -57,7 +57,8 @@
                     <p id="IDContain"><span>ID:#</span><span id="ID"></span></p>
                 </div>
                 <div id="attackBtnContainer">
-                    <button id="attackButton" class="btn btn-info">Attacks</button>
+                    <button id="attackButton" class="btn btn-dark">Attacks</button>
+                    <button id="statButton" class="btn btn-dark">Stats</button>
                 </div>
                 <table id="detailTable">
                     <tr>
@@ -75,16 +76,25 @@
                     </tr>
                 </table>
             </div>
-
         </div>
         <div id="attackContainer">
             <table id="attackTable">
-                <tr>
-                    <th>Attacks</th>
+                <tr id="closeAttacks">
+                    <th>close attacks</th>
                 </tr>
             </table>
         </div>
+        <div id="stats">
+            <p id="hp">hp</p>
+            <p id="at">at</p>
+            <p id="def">def</p>
+            <p id="spzAt">spez-at</p>
+            <p id="spzDef">spez-def</p>
+            <p id="spd">spd</p>
+        </div>
     </div>
+
+
     <button id="loadMoreButton">Load more</button>
 
     <div id="searchedPokemonContainer">
