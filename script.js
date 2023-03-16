@@ -22,7 +22,6 @@ async function loadPokemon() {
         let currentPokemon = await response.json();
         printPokemon(currentPokemon);
         refreshLoadingBar(i, loadedPokemon)
-        console.log(currentPokemon)
     }
 }
 
@@ -73,7 +72,6 @@ async function showPokemonDetail(spd) {
 
 
 function setArrows(arrowID) {
-    console.log('Set id')
     document.getElementById('arrowContainer').innerHTML = `
     <span onclick="showPreviousPokemon(${arrowID})" id="arrowBack" class="material-symbols-outlined arrow">
         arrow_back
