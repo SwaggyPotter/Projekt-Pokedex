@@ -140,6 +140,22 @@ tr {
     margin-top: 25px;
 }
 
+#closeAttack{
+    position: fixed;
+    z-index: 10;
+    background-color: red;
+    cursor: pointer;
+    padding: 0px 6px;
+    border-radius: 50px;
+}
+#closeAttack:hover{
+    position: fixed;
+    z-index: 10;
+    background-color: rgb(255, 85, 85);
+    cursor: pointer;
+    padding: 0px 6px;
+}
+
 #stats{
     background-color: white;
     position: absolute;
@@ -204,6 +220,8 @@ tr {
 
 #closeAttacks{
     background-color: red;
+    position: fixed;
+    width: 181px;
 }
 
 #closeAttacks:hover{

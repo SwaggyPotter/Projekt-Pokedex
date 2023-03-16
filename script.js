@@ -94,7 +94,6 @@ function loadDetailInformation(detailInformation) {
     document.getElementById('height').innerText = detailInformation['height']
     document.getElementById('attackBtnContainer').innerHTML = `<button onclick="loadAttacks(${detailInformation['id']})" id="attackButton" class="btn btn-dark">Attacks</button>
     <button onclick="loadStats(${detailInformation['id']})" id="statButton" class="btn btn-dark">Stats</button>`
-
     if (detailInformation['types']['1']) {
         document.getElementById('typeClass2').innerText = detailInformation['types']['1']['type']['name']
     }
@@ -131,7 +130,6 @@ function showPreviousPokemon(previous) {
     }
     document.getElementById('attackContainer').style.display = 'none';
     document.getElementById('stats').style.display = 'none';
-    
 }
 
 
@@ -139,6 +137,7 @@ function search() {
     let pokeSearch = document.getElementById('pokeSearch').value
     printSearchedPokemon(pokeSearch)
 }
+
 
 async function printSearchedPokemon(sP) {
     let information = `https://pokeapi.co/api/v2/pokemon/${sP}/`
@@ -155,6 +154,7 @@ async function printSearchedPokemon(sP) {
 
 window.onscroll = function () { myFunction() };
 
+
 function myFunction() {
     if (document.documentElement.scrollTop > 80) {
         document.getElementById("searchContainer").style.position = 'fixed'
@@ -164,20 +164,22 @@ function myFunction() {
     }
 }
 
+
 function closeDetailCardContainer() {
     document.getElementById('searchedPokemonContainer').style.display = 'none';
     document.getElementById('body').style.overflow = 'visible';
 }
 
+
 function closeTable() {
     document.getElementById('attackContainer').style.display = 'none';
 }
+
 
 async function loadAttacks(attackID) {
     document.getElementById('attackContainer').style.display = 'flex';
     document.getElementById('attackTable').innerHTML = `
     <table id="attackTable">
-        <tr onclick="closeTable()" id="closeAttacks"><th>close attacks</th></tr>
     </table>`;
     let information = `https://pokeapi.co/api/v2/pokemon/${attackID}/`
     let response = await fetch(information)
@@ -199,7 +201,8 @@ async function loadStats(statID) {
     document.getElementById('stats').style.display = 'flex';
 }
 
-function printStats(detailInformation){
+
+function printStats(detailInformation) {
     document.getElementById('hp').style = `width:${calcStat(detailInformation['stats']['0']['base_stat'], maxHP)}%`
     document.getElementById('hp').innerText = `${calcStat(detailInformation['stats']['0']['base_stat'], maxHP).toFixed()}`
     document.getElementById('attack').style = `width:${calcStat(detailInformation['stats']['1']['base_stat'], maxAT)}%`
@@ -213,7 +216,6 @@ function printStats(detailInformation){
     document.getElementById('speed').style = `width:${calcStat(detailInformation['stats']['5']['base_stat'], maxSPD)}%`
     document.getElementById('speed').innerText = `${calcStat(detailInformation['stats']['5']['base_stat'], maxSPD).toFixed()}`
 }
-
 
 
 function calcStat(sum1, sum2) {
