@@ -117,7 +117,7 @@ function showNextPokemon(next) {
     next++
     showPokemonDetail(next)
     document.getElementById('attackContainer').style.display = 'none';
-    document.getElementById('stats').style.display = 'none';
+    loadStats(next)
 }
 
 
@@ -127,7 +127,7 @@ function showPreviousPokemon(previous) {
         showPokemonDetail(previous)
     }
     document.getElementById('attackContainer').style.display = 'none';
-    document.getElementById('stats').style.display = 'none';
+    loadStats(previous)
 }
 
 
