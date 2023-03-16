@@ -8,6 +8,7 @@ let maxDEF = 230;
 let maxSAT = 194;
 let maxSDEF = 230;
 let maxSPD = 180;
+let statsOpen = 0;
 
 
 loadButton.addEventListener('click', () => {
@@ -110,6 +111,7 @@ function closeDetail() {
     document.getElementById('typeClass2').innerText = '-';
     document.getElementById('attackContainer').style.display = 'none';
     document.getElementById('stats').style.display = 'none';
+    statsOpen = 0;
 }
 
 
@@ -117,7 +119,9 @@ function showNextPokemon(next) {
     next++
     showPokemonDetail(next)
     document.getElementById('attackContainer').style.display = 'none';
-    loadStats(next)
+    if (statsOpen == 1) {
+        loadStats(next)
+    }
 }
 
 
@@ -127,7 +131,9 @@ function showPreviousPokemon(previous) {
         showPokemonDetail(previous)
     }
     document.getElementById('attackContainer').style.display = 'none';
-    loadStats(previous)
+    if (statsOpen == 1) {
+        loadStats(previous)
+    }
 }
 
 
@@ -197,6 +203,7 @@ async function loadStats(statID) {
     let detailInformation = await response.json();
     printStats(detailInformation)
     document.getElementById('stats').style.display = 'flex';
+    statsOpen = 1;
 }
 
 
