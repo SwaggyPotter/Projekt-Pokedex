@@ -16,6 +16,7 @@
 </head>
 
 <body id="body" onload="loadPokemon()">
+
     <div id="loadingBarContainer">
         <div class="progress">
             <div id="loadingBar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
@@ -26,23 +27,26 @@
     <div id="pokedex">
         <h1 id="pokeName">Pokedex by Tim :)</h1>
     </div>
+
     <div id="searchContainer">
         <input placeholder="Pokemon suchen" id="pokeSearch" type="text">
         <button onclick="search()">Suchen</button>
     </div>
 
     <div id="pokemonContainer">
-
     </div>
 
     <div id="centerOverAll">
+
         <div id="pokeDetailCard">
             <p id="closeDetailCard"><span id="closeX" onclick="closeDetail()">X</span></p>
             <div id="pokeDetailPicContainer">
                 <img id="pokeDetailPic"
                     src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/144.png">
             </div>
+
             <hr>
+
             <div id="arrowContainer">
                 <span id="arrowBack" class="material-symbols-outlined arrow">
                     arrow_back
@@ -51,6 +55,7 @@
                     arrow_forward
                 </span>
             </div>
+
             <div id="detailInformation">
                 <div>
                     <b id="detailName">name</b>
@@ -77,11 +82,13 @@
                 </table>
             </div>
         </div>
+
         <div id="attackContainer">
             <span onclick="closeTable()" id="closeAttack">X</span>
             <table id="attackTable">
             </table>
         </div>
+
         <div id="stats">
             <b>HP</b>
             <div class="progress">
@@ -110,13 +117,13 @@
         </div>
     </div>
 
-
     <button id="loadMoreButton">Load more</button>
 
     <div id="searchedPokemonContainer">
-
     </div>
+
 </body>
+
 <script src="script.js"></script>
 
 </html>
