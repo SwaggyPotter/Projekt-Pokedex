@@ -41,13 +41,14 @@ tr {
 }
 
 #attackContainer{
-    min-width: 100px;
-    min-height: 450px;
+    min-width: 200px;
+    max-width: 200px;
     max-height: 450px;
     overflow-y: scroll;
     background-color: white;
     display: none;
-    margin-left: -130px;
+    margin-left: -201px;
+    margin-top: -350px;
     z-index: 6;
 }
 
@@ -129,6 +130,7 @@ tr {
     position: relative;
     z-index: 5;
     overflow: hidden;
+    margin-top: -350px;
 }
 
 #attackBtnContainer{
@@ -143,8 +145,8 @@ tr {
     position: absolute;
     z-index: 10;
     width: 350px;
-    margin-top: 545px;
-    display: flex;
+    margin-top: 340px;
+    display: none;
     flex-direction: column;
     border: solid black 1px;
 }
@@ -314,11 +316,12 @@ tr {
         position: absolute;
         z-index: 10;
         width: 320px;
-        margin-top: 690px;
-        display: flex;
+        margin-top: 340px;
+        display: none;
         flex-direction: column;
         border: solid black 1px;
     }
+
 
 
 }
