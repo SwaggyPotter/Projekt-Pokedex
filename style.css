@@ -262,6 +262,7 @@ tr {
     position: fixed;
     top: 0;
     width: 100%;
+    z-index: 2;
 }
 
 
@@ -308,6 +309,20 @@ tr {
     top: 0;
 }
 
+
+#loadingScreen{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('pics/simple_pokeball.gif');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+    display: none;
+}
 
 @media screen and (max-width: 767px) {
 

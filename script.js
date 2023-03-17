@@ -23,7 +23,18 @@ async function loadPokemon() {
         let currentPokemon = await response.json();
         printPokemon(currentPokemon);
         refreshLoadingBar(i, loadedPokemon)
+        setLoadingScreen();
     }
+}
+
+
+function setLoadingScreen(){
+    document.getElementById('loadingScreen').style.display = 'flex';
+}
+
+
+function releaseLoadingScreen(){
+    document.getElementById('loadingScreen').style.display = 'none';
 }
 
 
@@ -34,6 +45,9 @@ function refreshLoadingBar(l, LP) {
     if (loadingBar.toFixed() > 98) {
         document.getElementById('loadingBar').innerText = `${LP} von 1010 Pokemon geladen`
         document.getElementById('loadingBar').style = `width:100%`
+        setTimeout(()=>{
+            releaseLoadingScreen();
+        },1000)
     }
 }
 
