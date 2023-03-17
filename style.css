@@ -377,16 +377,16 @@ tr {
         max-height: 100vh;
         background-color: white;
         position: relative;
-        background-color: rgb(230, 227, 102);
+        background-color: white;
     }
 
 
     #stats{
-        background-color: rgb(205, 216, 110);
+        background-color: white;
         position: absolute;
         z-index: 10;
         width: 320px;
-        margin-top: 340px;
+        margin-top: 361px;
         display: none;
         flex-direction: column;
         border: solid black 1px;
