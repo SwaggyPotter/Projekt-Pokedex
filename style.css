@@ -7,12 +7,18 @@ body {
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
+    
 }
 
 
 table {
-    width: 100%;
-    border: solid black 1px;
+    width: 94%;
+    background-color: white;
+    border: solid red 1px;
+}
+
+.borderCollaps{
+    border-collapse: collapse;
 }
 
 
@@ -25,7 +31,7 @@ tr {
 
 #detailTable th {
     text-align: center;
-    border: solid black 1px;
+    border: solid rgb(255, 30, 0) 1px;
     width: 50%;
 }
 
@@ -127,11 +133,16 @@ tr {
     max-width: 350px;
     min-height: 450px;
     max-height: 100vh;
-    background-color: rgb(230, 227, 102);
+    background-color: rgb(255, 255, 255);
+    background-image: url('pics/pokeCardBackground.jpg');
+    background-position: center;
+    background-size: cover;
     position: relative;
     z-index: 5;
     overflow: hidden;
     margin-top: -350px;
+    padding: 10px;
+    border-radius: 5px 5px 0px 0px;
 }
 
 
@@ -139,7 +150,6 @@ tr {
     width: 100%;
     display: flex;
     justify-content: space-evenly;
-    margin-top: 25px;
 }
 
 
@@ -166,14 +176,15 @@ tr {
 }
 
 #stats{
-    background-color: rgb(205, 216, 110);
+    background-color: rgb(255, 255, 255);
     position: absolute;
     z-index: 10;
     width: 350px;
-    margin-top: 340px;
+    margin-top: 361px;
     display: none;
     flex-direction: column;
-    border: solid black 1px;
+    padding: 10px;
+    
 }
 
 
@@ -186,6 +197,9 @@ tr {
 #IDContain {
     display: flex;
     justify-content: center;
+    background-color: rgb(255, 0, 0);
+    width: 30%;
+    border-radius: 10px;
 }
 
 
@@ -197,6 +211,9 @@ tr {
 #detailName {
     display: flex;
     justify-content: center;
+    color: rgb(0, 0, 0);
+    background-color: rgb(253, 0, 34);
+    border-radius: 10px;
 }
 
 
@@ -269,12 +286,13 @@ tr {
 #arrowContainer {
     display: flex;
     justify-content: space-between;
+    margin-top: 20px;
 }
 
 
 .arrow {
     cursor: pointer;
-    background-color: rgb(207, 174, 64);
+    background-color: rgb(207, 64, 64);
     padding: 5px;
     border-radius: 20px;
     transition: 125ms;
