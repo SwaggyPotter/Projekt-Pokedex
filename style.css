@@ -94,7 +94,11 @@ tr {
     max-width: 300px;
     cursor: pointer;
     transition: 125ms;
-    background-color: rgba(58, 105, 190, 0.589);
+    background-image: url('pics/pngfind.com-pokeball-png-1230253.png');
+    background-position-x: 190px;
+    background-position-y: -10px;
+    background-size: 40%;
+    background-repeat: no-repeat;
     margin: 5px;
     color: white;
     border-radius: 10px;
