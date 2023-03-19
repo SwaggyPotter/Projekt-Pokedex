@@ -13,11 +13,10 @@ let allPokemon = [];
 
 
 async function loadAllPokemonIntoArray() {
-    for (i = 1; i < 1010; i++) {
-        let url = `https://pokeapi.co/api/v2/pokemon/${i}/`
+    for (e = 1; e < 1010; e++) {
+        let url = `https://pokeapi.co/api/v2/pokemon/${e}/`
         let response = await fetch(url);
         let currentPokemon = await response.json();
-        console.log(currentPokemon['name'])
         allPokemon.push(currentPokemon['name'])
     }
 }
@@ -25,28 +24,18 @@ loadAllPokemonIntoArray();
 
 
 function filter() {
-    let L ;
-    //L.push()
-
-    var data = String(document.getElementById('pokeSearch').value);
+    let L;
+    let data = String(document.getElementById('pokeSearch').value);
     L = data.split(' ').map(i => i.split(''));
-
-    console.log(L);
-
     // iterate over array
     const out = allPokemon.filter(el => {
-        // initialize count to zero
-        let count = 0;
-        // iterate over current element's letters
-        el.split('').forEach(letter => {
-            // if current letter in L is letter, increment count
-            if (L[0][count] === letter) { count++; }
+        let count = 0;// initialize count to zero
+        el.split('').forEach(letter => {// iterate over current element's letters
+            if (L[0][count] === letter) { count++; }// if current letter in L is letter, increment count
         });
-        // after iterating, check if all L letters were found in order
-        return count === L[0].length;
+        return count === L[0].length;// after iterating, check if all L letters were found in order
     });
-    document.getElementById('pokemonContainer').innerHTML = `<b>${out}</b>`
-    console.log(out);
+    // out für die Ausgabe verwenden
 }
 
 loadButton.addEventListener('click', () => {
@@ -108,8 +97,69 @@ function loadMorePokemon() {
 function printPokemon(cP) {
     document.getElementById('pokemonContainer').innerHTML += `
     <div onclick="showPokemonDetail(${i})" class="pokeContainer" id="pokeID${i}"><img src="${cP['sprites']['front_default']}">
-     <p class="pokeNameDesigne">${cP['name']}</p>
+     <b class="pokeNameDesigne">${cP['name']}</b>
     </div>`
+    setBackgroundColor(i, cP);
+}
+
+function setBackgroundColor(setColorID, Data) {
+    if (Data['types']['0']['type']['name'] == 'normal') {
+        document.getElementById(`pokeID${setColorID}`).style.backgroundColor = '#A8A77A'
+    }
+    else if (Data['types']['0']['type']['name'] == 'fire') {
+        document.getElementById(`pokeID${setColorID}`).style.backgroundColor = '#EE8130'
+    }
+    else if (Data['types']['0']['type']['name'] == 'water') {
+        document.getElementById(`pokeID${setColorID}`).style.backgroundColor = '#6390F0'
+    }
+    else if (Data['types']['0']['type']['name'] == 'electric') {
+        document.getElementById(`pokeID${setColorID}`).style.backgroundColor = '#F7D02C'
+    }
+    else if (Data['types']['0']['type']['name'] == 'grass') {
+        document.getElementById(`pokeID${setColorID}`).style.backgroundColor = '#7AC74C'
+    }
+    else if (Data['types']['0']['type']['name'] == 'ice') {
+        document.getElementById(`pokeID${setColorID}`).style.backgroundColor = '#96D9D6'
+    }
+    else if (Data['types']['0']['type']['name'] == 'fighting') {
+        document.getElementById(`pokeID${setColorID}`).style.backgroundColor = '#C22E28'
+    }
+    else if (Data['types']['0']['type']['name'] == 'poison') {
+        document.getElementById(`pokeID${setColorID}`).style.backgroundColor = '#A33EA1'
+    }
+    else if (Data['types']['0']['type']['name'] == 'ground') {
+        document.getElementById(`pokeID${setColorID}`).style.backgroundColor = '#E2BF65'
+    }
+    else if (Data['types']['0']['type']['name'] == 'flying') {
+        document.getElementById(`pokeID${setColorID}`).style.backgroundColor = '#A98FF3'
+    }
+    else if (Data['types']['0']['type']['name'] == 'psychic') {
+        document.getElementById(`pokeID${setColorID}`).style.backgroundColor = '#F95587'
+    }
+    else if (Data['types']['0']['type']['name'] == 'ice') {
+        document.getElementById(`pokeID${setColorID}`).style.backgroundColor = '#96D9D6'
+    }
+    else if (Data['types']['0']['type']['name'] == 'bug') {
+        document.getElementById(`pokeID${setColorID}`).style.backgroundColor = '#A6B91A'
+    }
+    else if (Data['types']['0']['type']['name'] == 'rock') {
+        document.getElementById(`pokeID${setColorID}`).style.backgroundColor = '#B6A136'
+    }
+    else if (Data['types']['0']['type']['name'] == 'ghost') {
+        document.getElementById(`pokeID${setColorID}`).style.backgroundColor = '#735797'
+    }
+    else if (Data['types']['0']['type']['name'] == 'dragon') {
+        document.getElementById(`pokeID${setColorID}`).style.backgroundColor = '#6F35FC'
+    }
+    else if (Data['types']['0']['type']['name'] == 'dark') {
+        document.getElementById(`pokeID${setColorID}`).style.backgroundColor = '#705746'
+    }
+    else if (Data['types']['0']['type']['name'] == 'steel') {
+        document.getElementById(`pokeID${setColorID}`).style.backgroundColor = '#B7B7CE'
+    }
+    else if (Data['types']['0']['type']['name'] == 'fairy') {
+        document.getElementById(`pokeID${setColorID}`).style.backgroundColor = '#D685AD'
+    }
 }
 
 
