@@ -192,7 +192,7 @@ async function filter() {
         }
     }
     else {
-        console.log('nö')
+        document.getElementById('searchedPokemonContainer').style.display = 'none';
     }
 }
 
