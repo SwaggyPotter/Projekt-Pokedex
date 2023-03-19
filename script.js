@@ -23,21 +23,6 @@ async function loadAllPokemonIntoArray() {
 loadAllPokemonIntoArray();
 
 
-function filter() {
-    let L;
-    let data = String(document.getElementById('pokeSearch').value);
-    L = data.split(' ').map(i => i.split(''));
-    // iterate over array
-    const out = allPokemon.filter(el => {
-        let count = 0;// initialize count to zero
-        el.split('').forEach(letter => {// iterate over current element's letters
-            if (L[0][count] === letter) { count++; }// if current letter in L is letter, increment count
-        });
-        return count === L[0].length;// after iterating, check if all L letters were found in order
-    });
-    // out für die Ausgabe verwenden
-}
-
 loadButton.addEventListener('click', () => {
     loadMorePokemon();
 })
@@ -96,70 +81,10 @@ function loadMorePokemon() {
 
 function printPokemon(cP) {
     document.getElementById('pokemonContainer').innerHTML += `
-    <div onclick="showPokemonDetail(${i})" class="pokeContainer" id="pokeID${i}"><img src="${cP['sprites']['front_default']}">
+    <div onclick="showPokemonDetail(${i})" class="pokeContainer ${checkForClass(cP)}" id="pokeID${i}"><img src="${cP['sprites']['front_default']}">
      <b class="pokeNameDesigne">${cP['name']}</b>
     </div>`
-    setBackgroundColor(i, cP);
-}
-
-function setBackgroundColor(setColorID, Data) {
-    if (Data['types']['0']['type']['name'] == 'normal') {
-        document.getElementById(`pokeID${setColorID}`).style.backgroundColor = '#A8A77A'
-    }
-    else if (Data['types']['0']['type']['name'] == 'fire') {
-        document.getElementById(`pokeID${setColorID}`).style.backgroundColor = '#EE8130'
-    }
-    else if (Data['types']['0']['type']['name'] == 'water') {
-        document.getElementById(`pokeID${setColorID}`).style.backgroundColor = '#6390F0'
-    }
-    else if (Data['types']['0']['type']['name'] == 'electric') {
-        document.getElementById(`pokeID${setColorID}`).style.backgroundColor = '#F7D02C'
-    }
-    else if (Data['types']['0']['type']['name'] == 'grass') {
-        document.getElementById(`pokeID${setColorID}`).style.backgroundColor = '#7AC74C'
-    }
-    else if (Data['types']['0']['type']['name'] == 'ice') {
-        document.getElementById(`pokeID${setColorID}`).style.backgroundColor = '#96D9D6'
-    }
-    else if (Data['types']['0']['type']['name'] == 'fighting') {
-        document.getElementById(`pokeID${setColorID}`).style.backgroundColor = '#C22E28'
-    }
-    else if (Data['types']['0']['type']['name'] == 'poison') {
-        document.getElementById(`pokeID${setColorID}`).style.backgroundColor = '#A33EA1'
-    }
-    else if (Data['types']['0']['type']['name'] == 'ground') {
-        document.getElementById(`pokeID${setColorID}`).style.backgroundColor = '#E2BF65'
-    }
-    else if (Data['types']['0']['type']['name'] == 'flying') {
-        document.getElementById(`pokeID${setColorID}`).style.backgroundColor = '#A98FF3'
-    }
-    else if (Data['types']['0']['type']['name'] == 'psychic') {
-        document.getElementById(`pokeID${setColorID}`).style.backgroundColor = '#F95587'
-    }
-    else if (Data['types']['0']['type']['name'] == 'ice') {
-        document.getElementById(`pokeID${setColorID}`).style.backgroundColor = '#96D9D6'
-    }
-    else if (Data['types']['0']['type']['name'] == 'bug') {
-        document.getElementById(`pokeID${setColorID}`).style.backgroundColor = '#A6B91A'
-    }
-    else if (Data['types']['0']['type']['name'] == 'rock') {
-        document.getElementById(`pokeID${setColorID}`).style.backgroundColor = '#B6A136'
-    }
-    else if (Data['types']['0']['type']['name'] == 'ghost') {
-        document.getElementById(`pokeID${setColorID}`).style.backgroundColor = '#735797'
-    }
-    else if (Data['types']['0']['type']['name'] == 'dragon') {
-        document.getElementById(`pokeID${setColorID}`).style.backgroundColor = '#6F35FC'
-    }
-    else if (Data['types']['0']['type']['name'] == 'dark') {
-        document.getElementById(`pokeID${setColorID}`).style.backgroundColor = '#705746'
-    }
-    else if (Data['types']['0']['type']['name'] == 'steel') {
-        document.getElementById(`pokeID${setColorID}`).style.backgroundColor = '#B7B7CE'
-    }
-    else if (Data['types']['0']['type']['name'] == 'fairy') {
-        document.getElementById(`pokeID${setColorID}`).style.backgroundColor = '#D685AD'
-    }
+    
 }
 
 
@@ -245,18 +170,100 @@ function search() {
 }
 
 
+async function filter() {
+    let L;
+    let data = String(document.getElementById('pokeSearch').value);
+    L = data.split(' ').map(i => i.split(''));
+    // iterate over array
+    const out = allPokemon.filter(el => {
+        let count = 0;// initialize count to zero
+        el.split('').forEach(letter => {// iterate over current element's letters
+            if (L[0][count] === letter) { count++; }// if current letter in L is letter, increment count
+        });
+        return count === L[0].length;// after iterating, check if all L letters were found in order
+    });
+    // out für die Ausgabe verwenden
+    for (let index = 0; index < out.length; index++) {
+        printSearchedPokemon(out[index])
+        console.log(out[index])
+    }
+}
+
+
+
 async function printSearchedPokemon(sP) {
     let information = `https://pokeapi.co/api/v2/pokemon/${sP}/`
     let response = await fetch(information)
     let detailInformation = await response.json();
-    document.getElementById('body').style.overflow = 'hidden';
+    document.getElementById('body').style.overflow = 'scroll';
     document.getElementById('searchedPokemonContainer').style.display = 'flex';
-    document.getElementById('searchedPokemonContainer').innerHTML = `
-    <div onclick="showPokemonDetail(${detailInformation['id']})" class="pokeContainer" id="pokeID"><img src="${detailInformation['sprites']['front_default']}">
-     <p class="pokeNameDesigne">${detailInformation['name']}</p>
+    document.getElementById('searchedPokemonContainer').innerHTML += `
+    <div onclick="showPokemonDetail(${detailInformation['id']})" class="pokeContainer ${checkForClass(detailInformation)}" id="pokeID">
+        <img src="${detailInformation['sprites']['front_default']}">
+        <p class="pokeNameDesigne">${detailInformation['name']}</p>
     </div>`
 }
 
+
+function checkForClass(data){
+    if (data['types']['0']['type']['name'] == 'normal') {
+        return 'normal'
+    }
+    else if (data['types']['0']['type']['name'] == 'fire') {
+        return 'fire'
+    }
+    else if (data['types']['0']['type']['name'] == 'water') {
+        return 'water'
+    }
+    else if (data['types']['0']['type']['name'] == 'electric') {
+        return 'electric'
+    }
+    else if (data['types']['0']['type']['name'] == 'grass') {
+        return 'grass'
+    }
+    else if (data['types']['0']['type']['name'] == 'ice') {
+        return 'ice'
+    }
+    else if (data['types']['0']['type']['name'] == 'fighting') {
+        return 'fighting'
+    }
+    else if (data['types']['0']['type']['name'] == 'poison') {
+        return 'poison'
+    }
+    else if (data['types']['0']['type']['name'] == 'ground') {
+        return 'ground'
+    }
+    else if (data['types']['0']['type']['name'] == 'flying') {
+        return 'flying'
+    }
+    else if (data['types']['0']['type']['name'] == 'psychic') {
+        return 'psychic';
+    }
+    else if (data['types']['0']['type']['name'] == 'ice') {
+        return 'ice'
+    }
+    else if (data['types']['0']['type']['name'] == 'bug') {
+        return 'bug'
+    }
+    else if (data['types']['0']['type']['name'] == 'rock') {
+        return 'rock'
+    }
+    else if (data['types']['0']['type']['name'] == 'ghost') {
+        return 'ghost';
+    }
+    else if (data['types']['0']['type']['name'] == 'dragon') {
+        return 'dragon'
+    }
+    else if (data['types']['0']['type']['name'] == 'dark') {
+        return 'dark'
+    }
+    else if (data['types']['0']['type']['name'] == 'steel') {
+        return 'steel'
+    }
+    else if (data['types']['0']['type']['name'] == 'fairy') {
+       return 'fairy'
+    }
+}
 
 window.onscroll = function () { myFunction() };
 
