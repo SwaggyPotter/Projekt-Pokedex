@@ -84,7 +84,7 @@ function printPokemon(cP) {
     <div onclick="showPokemonDetail(${i})" class="pokeContainer ${checkForClass(cP)}" id="pokeID${i}"><img src="${cP['sprites']['front_default']}">
      <b class="pokeNameDesigne">${cP['name']}</b>
     </div>`
-    
+
 }
 
 
@@ -171,22 +171,28 @@ function search() {
 
 
 async function filter() {
-    document.getElementById('searchedPokemonContainer').innerHTML = ``;
-    let L;
-    let data = String(document.getElementById('pokeSearch').value);
-    L = data.split(' ').map(i => i.split(''));
-    // iterate over array
-    const out = allPokemon.filter(el => {
-        let count = 0;// initialize count to zero
-        el.split('').forEach(letter => {// iterate over current element's letters
-            if (L[0][count] === letter) { count++; }// if current letter in L is letter, increment count
+    let inputVal = document.getElementById('pokeSearch').value
+    if (inputVal.length > 0) {
+        document.getElementById('searchedPokemonContainer').innerHTML = ``;
+        let L;
+        let data = String(document.getElementById('pokeSearch').value);
+        L = data.split(' ').map(i => i.split(''));
+        // iterate over array
+        const out = allPokemon.filter(el => {
+            let count = 0;// initialize count to zero
+            el.split('').forEach(letter => {// iterate over current element's letters
+                if (L[0][count] === letter) { count++; }// if current letter in L is letter, increment count
+            });
+            return count === L[0].length;// after iterating, check if all L letters were found in order
         });
-        return count === L[0].length;// after iterating, check if all L letters were found in order
-    });
-    // out für die Ausgabe verwenden
-    for (let index = 0; index < out.length; index++) {
-        printSearchedPokemon(out[index])
-        console.log(out[index])
+        // out für die Ausgabe verwenden
+        for (let index = 0; index < out.length; index++) {
+            printSearchedPokemon(out[index])
+            console.log(out[index])
+        }
+    }
+    else {
+        console.log('nö')
     }
 }
 
@@ -200,21 +206,8 @@ async function printSearchedPokemon(sP) {
     document.getElementById('searchedPokemonContainer').innerHTML += `
     <div onclick="showPokemonDetail(${detailInformation['id']})" class="pokeContainer ${checkForClass(detailInformation)}" id="pokeID">
         <img src="${detailInformation['sprites']['front_default']}">
-        <p class="pokeNameDesigne">${detailInformation['name']}</p>
+        <b class="pokeNameDesigne">${detailInformation['name']}</b>
     </div>`
-}
-
-
-window.onscroll = function () { myFunction() };
-
-
-function myFunction() {
-    if (document.documentElement.scrollTop > 80) {
-        document.getElementById("searchContainer").style.position = 'fixed'
-        document.getElementById("searchContainer").style.top = '15px'
-    } else if (document.documentElement.scrollTop < 80) {
-        document.getElementById("searchContainer").style.position = "static";
-    }
 }
 
 
@@ -278,7 +271,7 @@ function calcStat(sum1, sum2) {
 }
 
 
-function checkForClass(data){
+function checkForClass(data) {
     if (data['types']['0']['type']['name'] == 'normal') {
         return 'normal'
     }
@@ -334,6 +327,6 @@ function checkForClass(data){
         return 'steel'
     }
     else if (data['types']['0']['type']['name'] == 'fairy') {
-       return 'fairy'
+        return 'fairy'
     }
 }

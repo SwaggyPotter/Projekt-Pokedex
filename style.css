@@ -45,6 +45,9 @@ tr {
     min-height: 100px;
     background-color: rgb(221, 65, 65);
     padding: 15px;
+    position: fixed;
+    width: 100%;
+    z-index: 2;
 }
 
 
@@ -310,6 +313,11 @@ tr {
     transition: 125ms;
 }
 
+#secondSearchBar{
+    position: fixed;
+    top: 100px;
+    z-index: 10;
+}
 
 #loadMoreButton{
     width: 100%;
@@ -327,10 +335,13 @@ tr {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    background-image: url('pics/pokedexBackground.jpg');
+    background-image: url('pics/ezgif.com-video-to-gif.gif');
     background-position: center;
-    top: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    top: 0px;
 }
+
 
 
 #loadingScreen{
