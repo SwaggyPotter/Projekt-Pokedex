@@ -1,6 +1,6 @@
 let currentPokemon;
 let loadButton = document.getElementById('loadMoreButton')
-let loadedPokemon = 150;
+let loadedPokemon = 50;
 let loadedPokemonCounter = 1;
 let maxHP = 255;
 let maxAT = 190;
@@ -9,7 +9,45 @@ let maxSAT = 194;
 let maxSDEF = 230;
 let maxSPD = 180;
 let statsOpen = 0;
+let allPokemon = [];
 
+
+async function loadAllPokemonIntoArray() {
+    for (i = 1; i < 1010; i++) {
+        let url = `https://pokeapi.co/api/v2/pokemon/${i}/`
+        let response = await fetch(url);
+        let currentPokemon = await response.json();
+        console.log(currentPokemon['name'])
+        allPokemon.push(currentPokemon['name'])
+    }
+}
+loadAllPokemonIntoArray();
+
+
+function filter() {
+    let L ;
+    //L.push()
+
+    var data = String(document.getElementById('pokeSearch').value);
+    L = data.split(' ').map(i => i.split(''));
+
+    console.log(L);
+
+    // iterate over array
+    const out = allPokemon.filter(el => {
+        // initialize count to zero
+        let count = 0;
+        // iterate over current element's letters
+        el.split('').forEach(letter => {
+            // if current letter in L is letter, increment count
+            if (L[0][count] === letter) { count++; }
+        });
+        // after iterating, check if all L letters were found in order
+        return count === L[0].length;
+    });
+    document.getElementById('pokemonContainer').innerHTML = `<b>${out}</b>`
+    console.log(out);
+}
 
 loadButton.addEventListener('click', () => {
     loadMorePokemon();
@@ -28,12 +66,12 @@ async function loadPokemon() {
 }
 
 
-function setLoadingScreen(){
+function setLoadingScreen() {
     document.getElementById('loadingScreen').style.display = 'flex';
 }
 
 
-function releaseLoadingScreen(){
+function releaseLoadingScreen() {
     document.getElementById('loadingScreen').style.display = 'none';
 }
 
@@ -42,20 +80,20 @@ function refreshLoadingBar(l, LP) {
     let loadingBar = (l / LP) * 100
     document.getElementById('loadingBar').style = `width:${loadingBar}%`
     document.getElementById('loadingBar').innerText = `Pokemon are loading: ${loadingBar.toFixed()}%`
-    if (loadingBar.toFixed() > 98) {
+    if (loadingBar.toFixed() > 97) {
         document.getElementById('loadingBar').innerText = `${LP} von 1010 Pokemon geladen`
         document.getElementById('loadingBar').style = `width:100%`
-        setTimeout(()=>{
+        setTimeout(() => {
             releaseLoadingScreen();
-        },1000)
+        }, 1000)
     }
 }
 
 
 function loadMorePokemon() {
     if (loadedPokemon < 900) {
-        loadedPokemonCounter = loadedPokemonCounter + 150
-        loadedPokemon = loadedPokemon + 150;
+        loadedPokemonCounter = loadedPokemonCounter + 50
+        loadedPokemon = loadedPokemon + 50;
         loadPokemon();
     }
     else if (loadedPokemon == 900) {
