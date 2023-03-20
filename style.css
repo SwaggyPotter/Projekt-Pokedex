@@ -154,7 +154,7 @@ tr {
     overflow: hidden;
     margin-top: -250px;
     padding: 10px;
-    border-radius: 5px 5px 0px 0px;
+    border-radius: 5px;
 }
 
 
@@ -383,6 +383,7 @@ tr {
         background-color: white;
         position: relative;
         background-color: white;
+        border: solid black 1px;
     }
 
 
@@ -391,9 +392,21 @@ tr {
         position: absolute;
         z-index: 10;
         width: 320px;
-        margin-top: 361px;
+        margin-top: 460px;
         display: none;
         flex-direction: column;
         border: solid black 1px;
+        border-top: none;
+    }
+
+    #attackContainer{
+        min-width: 320px;
+        max-height: 250px;
+        overflow-y: scroll;
+        background-color: white;
+        display: none;
+        margin-left: -320px;
+        margin-top: 450px;
+        z-index: 6;
     }
 }
