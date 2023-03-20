@@ -100,6 +100,7 @@ async function showPokemonDetail(spd) {
     setArrows(spd)
     setDetailCardBackground();
     closeDetailCardContainer();
+    document.getElementById('body').style.overflow = 'hidden'
 }
 
 
@@ -143,6 +144,7 @@ function closeDetail() {
     document.getElementById('attackContainer').style.display = 'none';
     document.getElementById('stats').style.display = 'none';
     statsOpen = 0;
+    document.getElementById('body').style.overflow = 'visible'
 }
 
 
@@ -165,12 +167,6 @@ function showPreviousPokemon(previous) {
     if (statsOpen == 1) {
         loadStats(previous)
     }
-}
-
-
-function search() {
-    let pokeSearch = document.getElementById('pokeSearch').value
-    printSearchedPokemon(pokeSearch)
 }
 
 
@@ -201,6 +197,12 @@ async function filter() {
 }
 
 
+function deleteSearch(){
+    document.getElementById('searchedPokemonContainer').style.display = 'none';
+    document.getElementById('body').style.overflow = 'visible';
+    document.getElementById('pokeSearch').value = ``;
+}
+
 
 async function printSearchedPokemon(sP) {
     let information = `https://pokeapi.co/api/v2/pokemon/${sP}/`
@@ -212,6 +214,7 @@ async function printSearchedPokemon(sP) {
         <img src="${detailInformation['sprites']['front_default']}">
         <b class="pokeNameDesigne">${detailInformation['name']}</b>
     </div>`
+    document.getElementById('body').style.overflow = 'hidden'
 }
 
 

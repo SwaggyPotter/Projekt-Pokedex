@@ -10,7 +10,6 @@ body {
     
 }
 
-
 table {
     width: 94%;
     background-color: white;
@@ -21,13 +20,11 @@ table {
     border-collapse: collapse;
 }
 
-
 tr {
     display: flex;
     justify-content: space-around;
     width: 100%;
 }
-
 
 #detailTable th {
     text-align: center;
@@ -35,11 +32,9 @@ tr {
     width: 50%;
 }
 
-
 #attackContainer table tr{
     border: solid black 1px;
 }
-
 
 #pokedex {
     min-height: 100px;
@@ -50,7 +45,6 @@ tr {
     z-index: 1;
     top: 0;
 }
-
 
 #attackContainer{
     min-width: 350px;
@@ -65,12 +59,10 @@ tr {
     z-index: 6;
 }
 
-
 #pokedex h1 {
     margin: 0;
     color: white;
 }
-
 
 #pokemonContainer {
     flex-wrap: wrap;
@@ -79,7 +71,6 @@ tr {
     align-items: center;
     margin-top: 100px;
 }
-
 
 .typePic{
     width: 50px;
@@ -93,7 +84,6 @@ tr {
     margin: 0;
     color: black;
 }
-
 
 .pokeContainer {
     display: flex;
@@ -114,7 +104,6 @@ tr {
     border-radius: 10px;
 }
 
-
 .pokeContainer:hover {
     display: flex;
     flex-direction: column;
@@ -127,7 +116,6 @@ tr {
     color: white;
 }
 
-
 #centerOverAll {
     width: 100%;
     height: 100%;
@@ -136,10 +124,9 @@ tr {
     align-items: center;
     position: fixed;
     top: 0;
-    background-color: rgba(255, 255, 255, 0.219);
+    background-color: rgba(255, 255, 255, 0.747);
     z-index: 10;
 }
-
 
 #pokeDetailCard {
     display: none;
@@ -157,8 +144,8 @@ tr {
     margin-top: -250px;
     padding: 10px;
     border-radius: 5px;
+    border: solid black 1px;
 }
-
 
 #attackBtnContainer{
     width: 100%;
@@ -166,11 +153,9 @@ tr {
     justify-content: space-evenly;
 }
 
-
 #attackTable{
     background-color: #ffffff;
 }
-
 
 #stats{
     background-color: rgb(255, 255, 255);
@@ -181,15 +166,13 @@ tr {
     display: none;
     flex-direction: column;
     padding: 10px;
-    
+    border: solid black 1px;
 }
-
 
 #pokeDetailCard table {
     position: absolute;
     bottom: 0;
 }
-
 
 #IDContain {
     display: flex;
@@ -199,11 +182,9 @@ tr {
     border-radius: 10px;
 }
 
-
 #pokeDetailCard hr {
     margin-top: 0;
 }
-
 
 #detailName {
     display: flex;
@@ -213,19 +194,16 @@ tr {
     border-radius: 10px;
 }
 
-
 #closeDetailCard {
     cursor: pointer;
     position: relative;
     margin: 0;
 }
 
-
 #closeDetailCard:hover {
     cursor: pointer;
     position: relative;
 }
-
 
 #closeX {
     position: absolute;
@@ -234,7 +212,6 @@ tr {
     padding: 5px 15px;
 }
 
-
 #closeX:hover {
     position: absolute;
     right: 10px;
@@ -242,24 +219,20 @@ tr {
     padding: 5px 15px;
 }
 
-
 #closeAttacks{
     background-color: red;
     position: fixed;
     width: 181px;
 }
 
-
 #closeAttacks:hover{
     background-color: rgb(252, 111, 111);
     cursor: pointer;
 }
 
-
 #pokeDetailPic {
     width: 50%;
 }
-
 
 #pokeDetailPicContainer {
     width: 100%;
@@ -271,7 +244,6 @@ tr {
     background-position-y: -160px;
 }
 
-
 #loadingBarContainer {
     position: fixed;
     top: 0;
@@ -279,13 +251,11 @@ tr {
     z-index: 3;
 }
 
-
 #arrowContainer {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
 }
-
 
 .arrow {
     cursor: pointer;
@@ -294,7 +264,6 @@ tr {
     border-radius: 20px;
     transition: 125ms;
 }
-
 
 .arrow:hover {
     cursor: pointer;
@@ -315,11 +284,10 @@ tr {
     margin-top: 50px;
 }
 
-
 #searchedPokemonContainer{
     position:fixed;
     left: 0;
-    height: 100%;
+    height: 90%;
     width: 100%;
     overflow-y: scroll;
     display: none; /*standart none*/
@@ -331,9 +299,8 @@ tr {
     background-repeat: no-repeat;
     background-size: cover;
     top: 100px;
+    margin-bottom: 100px;
 }
-
-
 
 #loadingScreen{
     position: fixed;
@@ -350,8 +317,6 @@ tr {
 }
 
 @media screen and (max-width: 767px) {
-
-
     .pokeContainer {
         display: flex;
         flex-direction: column;
@@ -361,7 +326,6 @@ tr {
         max-width: 300px;
         cursor: pointer;
     }
-
 
     .pokeContainer:active {
         display: flex;
@@ -375,7 +339,6 @@ tr {
         transition: 125ms;
     }
 
-
     #pokeDetailCard {
         display: none;
         min-width: 320px;
@@ -387,7 +350,6 @@ tr {
         background-color: white;
         border: solid black 1px;
     }
-
 
     #stats{
         background-color: white;
