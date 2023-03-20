@@ -137,6 +137,7 @@ tr {
     position: fixed;
     top: 0;
     background-color: rgba(255, 255, 255, 0.219);
+    z-index: 10;
 }
 
 
@@ -151,9 +152,9 @@ tr {
     background-position: center;
     background-size: cover;
     position: relative;
-    z-index: 5;
+    z-index: 20;
     overflow: hidden;
-    margin-top: -50px;
+    margin-top: -250px;
     padding: 10px;
     border-radius: 5px;
 }
