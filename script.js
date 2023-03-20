@@ -82,9 +82,13 @@ function loadMorePokemon() {
 function printPokemon(cP) {
     document.getElementById('pokemonContainer').innerHTML += `
     <div onclick="showPokemonDetail(${i})" class="pokeContainer ${checkForClass(cP)}" id="pokeID${i}"><img src="${cP['sprites']['front_default']}">
-     <b class="pokeNameDesigne">${cP['name']}</b>
+    <b class="pokeNameDesigne">${cP['name']}</b>
+    <b class="pokeNameDesigne">ID: #${cP['id']}</b>
+    <div>
+        <img class="typePic" src="types/${checkForClass(cP)}.png" alt="type1">
+        <img class="typePic" src="types/${checkForClass2(cP)}.png" alt="type2">
+    </div>
     </div>`
-
 }
 
 
@@ -217,12 +221,9 @@ function closeDetailCardContainer() {
 }
 
 
-function closeTable() {
-    document.getElementById('attackContainer').style.display = 'none';
-}
-
-
 async function loadAttacks(attackID) {
+    statsOpen = 0;
+    document.getElementById('stats').style.display = 'none';
     document.getElementById('attackContainer').style.display = 'flex';
     document.getElementById('attackTable').innerHTML = `
     <table id="attackTable">
@@ -305,9 +306,6 @@ function checkForClass(data) {
     else if (data['types']['0']['type']['name'] == 'psychic') {
         return 'psychic';
     }
-    else if (data['types']['0']['type']['name'] == 'ice') {
-        return 'ice'
-    }
     else if (data['types']['0']['type']['name'] == 'bug') {
         return 'bug'
     }
@@ -328,5 +326,68 @@ function checkForClass(data) {
     }
     else if (data['types']['0']['type']['name'] == 'fairy') {
         return 'fairy'
+    }
+}
+
+
+function checkForClass2(data) {
+    if (data['types']['1'] !== undefined) {
+        if (data['types']['1']['type']['name'] == 'normal') {
+            return 'normal'
+        }
+        else if (data['types']['1']['type']['name'] == 'fire') {
+            return 'fire'
+        }
+        else if (data['types']['1']['type']['name'] == 'water') {
+            return 'water'
+        }
+        else if (data['types']['1']['type']['name'] == 'electric') {
+            return 'electric'
+        }
+        else if (data['types']['1']['type']['name'] == 'grass') {
+            return 'grass'
+        }
+        else if (data['types']['1']['type']['name'] == 'ice') {
+            return 'ice'
+        }
+        else if (data['types']['1']['type']['name'] == 'fighting') {
+            return 'fighting'
+        }
+        else if (data['types']['1']['type']['name'] == 'poison') {
+            return 'poison'
+        }
+        else if (data['types']['1']['type']['name'] == 'ground') {
+            return 'ground'
+        }
+        else if (data['types']['1']['type']['name'] == 'flying') {
+            return 'flying'
+        }
+        else if (data['types']['1']['type']['name'] == 'psychic') {
+            return 'psychic';
+        }
+        else if (data['types']['1']['type']['name'] == 'bug') {
+            return 'bug'
+        }
+        else if (data['types']['1']['type']['name'] == 'rock') {
+            return 'rock'
+        }
+        else if (data['types']['1']['type']['name'] == 'ghost') {
+            return 'ghost';
+        }
+        else if (data['types']['1']['type']['name'] == 'dragon') {
+            return 'dragon'
+        }
+        else if (data['types']['1']['type']['name'] == 'dark') {
+            return 'dark'
+        }
+        else if (data['types']['1']['type']['name'] == 'steel') {
+            return 'steel'
+        }
+        else if (data['types']['1']['type']['name'] == 'fairy') {
+            return 'fairy'
+        }
+    }
+    else if (data['types']['1'] === undefined) {
+        return 'normal'
     }
 }

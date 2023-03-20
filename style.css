@@ -47,19 +47,20 @@ tr {
     padding: 15px;
     position: fixed;
     width: 100%;
-    z-index: 2;
+    z-index: 1;
+    top: 0;
 }
 
 
 #attackContainer{
-    min-width: 200px;
-    max-width: 200px;
-    max-height: 450px;
+    min-width: 350px;
+    max-width: 400px;
+    max-height: 250px;
     overflow-y: scroll;
     background-color: white;
     display: none;
-    margin-left: -201px;
-    margin-top: -350px;
+    margin-left: -350px;
+    margin-top: 450px;
     z-index: 6;
 }
 
@@ -75,8 +76,13 @@ tr {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 100px;
 }
 
+
+.typePic{
+    width: 50px;
+}
 
 .pokeNameDesigne {
     width: 100%;
@@ -146,7 +152,7 @@ tr {
     position: relative;
     z-index: 5;
     overflow: hidden;
-    margin-top: -350px;
+    margin-top: -250px;
     padding: 10px;
     border-radius: 5px 5px 0px 0px;
 }
@@ -159,34 +165,17 @@ tr {
 }
 
 
-#closeAttack{
-    position: fixed;
-    z-index: 10;
-    background-color: red;
-    cursor: pointer;
-    padding: 0px 8px;
-    border-radius: 50px;
-}
-
-
-#closeAttack:hover{
-    position: fixed;
-    z-index: 10;
-    background-color: rgb(255, 85, 85);
-    cursor: pointer;
-    padding: 0px 8px;
-}
-
 #attackTable{
     background-color: #ffffff;
 }
+
 
 #stats{
     background-color: rgb(255, 255, 255);
     position: absolute;
     z-index: 10;
     width: 350px;
-    margin-top: 361px;
+    margin-top: 460px;
     display: none;
     flex-direction: column;
     padding: 10px;
@@ -285,7 +274,7 @@ tr {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 2;
+    z-index: 3;
 }
 
 
@@ -316,7 +305,7 @@ tr {
 #secondSearchBar{
     position: fixed;
     top: 100px;
-    z-index: 10;
+    z-index: 2;
 }
 
 #loadMoreButton{
@@ -339,7 +328,7 @@ tr {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    top: 0px;
+    top: 100px;
 }
 
 
@@ -354,7 +343,7 @@ tr {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    z-index: 1;
+    z-index: 2;
     display: none;
 }
 
