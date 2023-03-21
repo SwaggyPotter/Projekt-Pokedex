@@ -1,6 +1,6 @@
 let currentPokemon;
 let loadButton = document.getElementById('loadMoreButton')
-let loadedPokemon = 50;
+let loadedPokemon = 30;
 let loadedPokemonCounter = 1;
 let maxHP = 255;
 let maxAT = 190;
@@ -54,7 +54,7 @@ function refreshLoadingBar(l, LP) {
     let loadingBar = (l / LP) * 100
     document.getElementById('loadingBar').style = `width:${loadingBar}%`
     document.getElementById('loadingBar').innerText = `Pokemon are loading: ${loadingBar.toFixed()}%`
-    if (loadingBar.toFixed() > 97) {
+    if (loadingBar.toFixed() > 94) {
         document.getElementById('loadingBar').innerText = `${LP} von 1010 Pokemon geladen`
         document.getElementById('loadingBar').style = `width:100%`
         setTimeout(() => {
@@ -66,8 +66,8 @@ function refreshLoadingBar(l, LP) {
 
 function loadMorePokemon() {
     if (loadedPokemon < 900) {
-        loadedPokemonCounter = loadedPokemonCounter + 50
-        loadedPokemon = loadedPokemon + 50;
+        loadedPokemonCounter = loadedPokemonCounter + 30
+        loadedPokemon = loadedPokemon + 30;
         loadPokemon();
     }
     else if (loadedPokemon == 900) {
@@ -98,7 +98,7 @@ async function showPokemonDetail(spd) {
     let detailInformation = await response.json();
     loadDetailInformation(detailInformation);
     setArrows(spd)
-    setDetailCardBackground();
+    setDetailCardBackground(detailInformation);
     closeDetailCardContainer();
     document.getElementById('body').style.overflow = 'hidden'
 }
@@ -131,9 +131,10 @@ function loadDetailInformation(detailInformation) {
 }
 
 
-function setDetailCardBackground() {
+function setDetailCardBackground(data) {
     document.getElementById('centerOverAll').style.display = 'flex';
     document.getElementById('pokeDetailCard').style.display = 'inline';
+    document.getElementById('pokeDetailCard').style.backgroundImage = `url(types/${checkForClass(data)}.png)`
 }
 
 

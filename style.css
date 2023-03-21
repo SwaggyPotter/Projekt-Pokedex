@@ -138,9 +138,10 @@ tr {
     min-height: 450px;
     max-height: 100vh;
     background-color: rgb(255, 255, 255);
-    background-image: url('pics/pokeCardBackground.jpg');
+    /*background-image: url('pics/pokeCardBackground.jpg');*/
     background-position: center;
-    background-size: cover;
+    background-size: 180%;
+    background-repeat: no-repeat;
     position: relative;
     z-index: 20;
     overflow: hidden;
@@ -180,7 +181,7 @@ tr {
 #IDContain {
     display: flex;
     justify-content: center;
-    background-color: rgb(255, 0, 0);
+    background-color: rgb(0, 255, 149);
     width: 30%;
     border-radius: 10px;
 }
@@ -193,7 +194,7 @@ tr {
     display: flex;
     justify-content: center;
     color: rgb(0, 0, 0);
-    background-color: rgb(253, 0, 34);
+    background-color: rgb(0, 253, 135);
     border-radius: 10px;
 }
 
